@@ -23,7 +23,7 @@ export class User {
   })
   email!: string;
 
-  @Column('varchar', { nullable: false, length: 255 })
+  @Column('varchar', { nullable: false, length: 255, name: 'full_name' })
   fullName!: string;
 
   @Column('varchar', { nullable: true, length: 255 })
