@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToMany } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable } from 'typeorm';
 import { Role } from './role.entity';
 
 @Entity('user')
@@ -32,6 +32,11 @@ export class User {
   @Column('double', { nullable: true})
   score?: number;
 
-  @ManyToMany(() => Role)
+  @ManyToMany(() => Role, {cascade: true, eager: true})
+  @JoinTable({
+    name: 'user_role',
+    joinColumn: { name: "user_id", referencedColumnName: "id" },
+    inverseJoinColumn: { name: "role_id", referencedColumnName: "id" }
+  })
   roles!: Role[];
 }

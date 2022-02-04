@@ -26,7 +26,7 @@ const config: ConnectionOptions = {
   // you can disable this if you prefer running migrations manually.
   migrationsRun: true,
   logging: true,
-  logger: 'simple-console',
+  logger: 'file',
 
   // allow both start:prod and start:dev to use migrations
   // __dirname is either dist or src folder, meaning either
